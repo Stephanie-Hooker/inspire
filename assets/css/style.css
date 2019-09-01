@@ -2,3 +2,47 @@
   color: red;
   font-size: 2em;
 }
+
+.delete {
+  color: red;
+  border: solid black 1px;
+}
+.x {
+  margin-left: 10px;
+  border: solid black 1px;
+}
+.completed {
+  top: .8rem;
+width: 1.25rem;
+height: 1.25rem;
+margin-left: 10px;
+}
+.strikethrough {
+  color:black;
+  text-decoration: line-through;
+}
+.card {
+  background: transparent;
+  
+}
+.card-body {
+  margin-top: 20px;
+}
+body, html {
+  height: 100%;
+}
+
+#background-image { 
+  
+  height: 100%; 
+ background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+.outline {
+  
+    text-shadow: #000 0px 0px 2px;
+    -webkit-font-smoothing: antialiased;
+}
+
