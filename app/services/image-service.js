@@ -25,6 +25,8 @@ export default class ImageService {
 	addSubscriber(prop, fn) {
 		_subscribers[prop].push(fn)
 	}
+
+	//a function to call the api to get an image
 	getImage() {
 		console.log('Calling the image')
 		imgApi.get()
