@@ -19,8 +19,6 @@ function _setState(prop, data) {
 }
 
 
-
-
 //TODO create methods to retrieve data trigger the update window when it is complete
 export default class QuoteService {
 	get Quote() {

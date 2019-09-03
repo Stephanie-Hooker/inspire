@@ -27,12 +27,13 @@ export default class TodoService {
 		return _state.error
 	}
 
+	//returns a new array of todos from state
 	get Todos() {
 		return _state.todos.map(item => new Todo(item))
 	}
 
-	// create a counter to hold your valued
-	// foreach over _state.todos
+	// create a counter to hold value
+	// foreach over todos
 	// // if todo.complete == false increment counter
 	// return counter;
 	get Remaining() {
@@ -50,46 +51,49 @@ export default class TodoService {
 		_subscribers[prop].push(fn)
 	}
 
+	//function that retrieves todos from Api and stores them in state
 	getTodos() {
 		console.log("Getting the Todo List")
 		todoApi.get()
 			.then(res => {
 				console.log(res)
 				//TODO Handle this response from the server
-				let result = res.data.data
-				_setState('todos', result)
+				_setState('todos', res.data.data)
 			})
 			.catch(err => _setState('error', err))
 	}
 
+	//function that receives a todo and posts it to the server
+	//receives the created todo back
 	addTodo(todo) {
 		todoApi.post('', todo)
 			.then(res => {
 				//TODO Handle this response from the server (hint: what data comes back, do you want this?)
 				let copyTodo = this.Todos
+				//make copy of todo and push the data from the server into copyTodo
 				copyTodo.push(new Todo(res.data.data))
+				//update state through setState
 				_setState('todos', copyTodo)
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
 
 	toggleTodoStatus(todoId) {
+		//check state to see if there is a todo with a matching id and return todo
 		let todo = _state.todos.find(todo => todo._id == todoId)
 		if (!todo) {
 			alert("could not find todo")
 			return false
 		}
-		debugger;
 		//TODO Make sure that you found a todo, 
 		//		and if you did find one
 		//		change its completed status to whatever it is not (ex: false => true or true => false)
 		todo.completed = !todo.completed
 		todoApi.put(todoId, todo)
 			.then(res => {
-				//if api call is 200 then reload Todos
+				//make sure the todo list is current
 				this.getTodos()
 				//TODO do you care about this data? or should you go get something else?
-				_setState('todos', _state.todos)
 			})
 			.catch(err => _setState('error', err))
 	}

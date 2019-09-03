@@ -36,9 +36,4 @@ export default class WeatherService {
 				_setState('weather', new Weather(res.data))
 			})
 	}
-
-	// 	function temperatureConverter(valNum) {
-	// 	valNum = parseFloat(valNum);
-	// 	document.getElementById("output-Fahrenheit").innerHTML = ((valNum - 273.15) * 1.8) + 32;
-	// }
 }
