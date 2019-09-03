@@ -31,8 +31,8 @@ export default class TodoService {
 		return _state.todos.map(item => new Todo(item))
 	}
 
-	// create a counter to hold your valued
-	// foreach over _state.todos
+	// create a counter to hold value
+	// foreach over todos
 	// // if todo.complete == false increment counter
 	// return counter;
 	get Remaining() {
@@ -79,14 +79,12 @@ export default class TodoService {
 			alert("could not find todo")
 			return false
 		}
-		debugger;
 		//TODO Make sure that you found a todo, 
 		//		and if you did find one
 		//		change its completed status to whatever it is not (ex: false => true or true => false)
 		todo.completed = !todo.completed
 		todoApi.put(todoId, todo)
 			.then(res => {
-				//if api call is 200 then reload Todos
 				this.getTodos()
 				//TODO do you care about this data? or should you go get something else?
 				_setState('todos', _state.todos)

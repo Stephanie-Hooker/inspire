@@ -32,24 +32,16 @@ export default class TodoController {
 
 	addTodo(e) {
 		e.preventDefault()
+		//TODO build the todo object from the data that comes into this method
 		var form = e.target
 		var todo = {
 			description: form.todo.value
-
-			//TODO build the todo object from the data that comes into this method
 		}
 		_todoService.addTodo(todo)
 	}
 
 	//NOTE This method will pass an Id to your service for the TODO that will need to be toggled
 	toggleTodoStatus(todoId) {
-		// get the todo
-
-		//set the completed = to the opposite of whatever it is currently.
-		// get element by id.... we set the id = the todo's _id
-
-		// if the todo.completed is true add the class .strikethrough
-		// otherwise clear the classes from the element
 		console.log(`Toggling todo ${todoId}`)
 		_todoService.toggleTodoStatus(todoId)
 	}
